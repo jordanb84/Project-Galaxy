@@ -3,11 +3,9 @@ package com.dungeon.game.map;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.dungeon.game.entity.Entity;
 import com.dungeon.game.entity.ship.impl.ShipPlayer;
 import com.dungeon.game.entity.ship.impl.ShipTest;
 import com.dungeon.game.map.sector.MapSector;
-import com.dungeon.game.map.sector.impl.SectorPaso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +42,7 @@ public class Map {
 
     public void moveToSector(MapSector currentSector, MapSector destinationSector) {
         this.activeSector = (destinationSector);
-        //Calculate power usage to move between the two sectors if the first is not null
+        //TODO Calculate power usage to move between the two sectors if the first is not null
     }
 
     public MapSector getActiveSector() {

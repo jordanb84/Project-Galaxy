@@ -11,6 +11,7 @@ import com.dungeon.game.entity.Entity;
 import com.dungeon.game.map.Map;
 import com.dungeon.game.map.sector.background.SectorBackground;
 import com.dungeon.game.map.sector.background.SectorBackgroundType;
+import com.dungeon.game.map.sector.planet.Planet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,48 +27,20 @@ public abstract class MapSector {
     private List<Entity> entitySpawnQueue = new ArrayList<Entity>();
     private List<Entity> entityDespawnQueue = new ArrayList<Entity>();
 
-    private OrthographicCamera backgroundCamera;
-    private SpriteBatch backgroundBatch;
+    private Planet planet;
 
-    private Texture starsLayerOne;
-    private Texture starsLayerTwo;
-
-    public static float MOVE_ONE_X = 0;
-    public static float MOVE_ONE_Y = 0;
-
-    public MapSector(Map map, SectorBackground background) {
+    public MapSector(Map map, Planet planet, SectorBackground background) {
         this.map = map;
         this.background = background;
-
-        this.backgroundCamera = new OrthographicCamera();
-        this.backgroundCamera.setToOrtho(false, Game.DISPLAY_WIDTH, Game.DISPLAY_HEIGHT);
-
-        this.backgroundBatch = new SpriteBatch();
-
-        this.starsLayerOne = new Texture(Gdx.files.internal("background/stars1.png"));
-        this.starsLayerTwo = new Texture(Gdx.files.internal("background/stars2.png"));
-
-        this.starsLayerOne.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        this.planet = planet;
     }
 
     public void render(SpriteBatch batch, OrthographicCamera camera) {
         batch.end();
         this.background.render();
-
-        /**this.backgroundBatch.setProjectionMatrix(this.backgroundCamera.combined);
-        this.backgroundBatch.begin();
-        this.backgroundBatch.draw(this.getBackground().SPRITE, 0, 0);
-
-        Vector2 playerPosition = this.getMap().getPlayer().getPosition();
-
-        this.backgroundBatch.draw(this.starsLayerOne, 0, 0, (int) this.MOVE_ONE_X, (int) this.MOVE_ONE_Y, 640, 480);
-        //this.backgroundBatch.draw(this.starsLayerTwo, 10, 10, (int) playerPosition.x, (int) playerPosition.y, 640, 480);
-        this.backgroundBatch.end();**/
-
         batch.begin();
 
-        System.out.println(this.getMap() + "A");
-        System.out.println(this.getMap().getPlayer() + " B");
+        this.planet.render(batch, camera);
 
         for(Entity entity : this.entities) {
             entity.render(batch, camera);
@@ -90,6 +63,8 @@ public abstract class MapSector {
         for(Entity entity : this.entities) {
             entity.update(camera);
         }
+
+        this.planet.update(camera);
     }
 
     public SectorBackground getBackground() {
@@ -116,4 +91,7 @@ public abstract class MapSector {
         return entities;
     }
 
+    public Planet getPlanet() {
+        return planet;
+    }
 }

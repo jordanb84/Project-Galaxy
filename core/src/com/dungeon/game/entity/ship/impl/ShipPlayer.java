@@ -41,12 +41,7 @@ public class ShipPlayer extends Ship {
         float diffX = (origX - posX);
         float diffY = (origY - posY);
 
-        MapSector.MOVE_ONE_X -= (diffX / 2);
-        MapSector.MOVE_ONE_Y += (diffY / 2);
-
         this.getParentMap().getActiveSector().getBackground().adjustStars(new Vector2(-diffX / 2, diffY / 2));
-
-        //System.out.println("Diff:" + diffX + "/" + diffY);
 
         if(Gdx.input.isKeyPressed(Input.Keys.W)) {
             this.setSpeed(this.getSpeed() + this.getAcceleration() * Gdx.graphics.getDeltaTime());
@@ -71,7 +66,5 @@ public class ShipPlayer extends Ship {
         if(Gdx.input.isKeyPressed(Input.Keys.A)) {
             this.setRotation(this.getRotation() + this.getManeuverability() * Gdx.graphics.getDeltaTime());
         }
-
-        System.out.println(this.getSpeed());
     }
 }

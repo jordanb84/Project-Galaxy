@@ -51,7 +51,6 @@ public class SectorBackground {
             this.batch.draw(starTexture, 0, 0, (int) starPosition.x, (int) starPosition.y, Game.DISPLAY_WIDTH, Game.DISPLAY_HEIGHT);
         }
 
-        System.out.println("done");
         this.batch.end();
     }
 
@@ -64,7 +63,6 @@ public class SectorBackground {
             starLayer.getValue().add(currentAdjustAmount.x, currentAdjustAmount.y);
 
             currentAdjustAmount.add(-decrementAmount.x, -decrementAmount.y);
-            //currentAdjustAmount -= decrementAmount;
         }
     }
 
