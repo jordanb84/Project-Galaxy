@@ -30,7 +30,6 @@ public class Game extends ApplicationAdapter {
 
 		this.stateController = new StateController();
 
-		this.stateController.registerState("newGame", new StateSectorTest(this.stateController));
 		this.stateController.registerState("startMenu", new StateStartMenu(this.stateController));
 
 		this.stateController.setActiveState("startMenu");

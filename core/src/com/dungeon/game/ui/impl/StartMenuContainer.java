@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.dungeon.game.state.State;
 import com.dungeon.game.state.StateController;
+import com.dungeon.game.state.impl.StateSectorTest;
 import com.dungeon.game.ui.SkinType;
 import com.dungeon.game.ui.UiContainer;
 
@@ -52,6 +53,7 @@ class NewGameButton extends TextButton {
         this.addListener(new ClickListener() {
            @Override
            public void clicked(InputEvent clickEvent, float clickX, float clickY) {
+               stateController.registerState("newGame", new StateSectorTest(stateController));
                stateController.setActiveState("newGame");
            }
         });

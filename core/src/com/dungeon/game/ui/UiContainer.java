@@ -44,6 +44,14 @@ public abstract class UiContainer {
         this.stage.act(Gdx.graphics.getDeltaTime());
     }
 
+    public void setVisible(boolean visible) {
+        this.getRootTable().setVisible(visible);
+    }
+
+    public boolean isVisible() {
+        return this.getRootTable().isVisible();
+    }
+
     public Skin getSkin() {
         return skin;
     }
