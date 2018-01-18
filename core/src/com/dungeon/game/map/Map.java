@@ -29,7 +29,11 @@ public class Map {
         this.player = new ShipPlayer(this);
 
         this.getActiveSector().spawnEntity(this.getPlayer());
-        this.getActiveSector().spawnEntity(new ShipTest(this, new Vector2(180, 250)));
+        this.getActiveSector().spawnEntity(new ShipTest(this, new Vector2(-150, 100)));
+
+        //The last entity spawned is not rendered due to a strange bug (probably camera or sprite batch related).
+        //This entity is a placeholder until the cause for this bug is found
+        this.getActiveSector().spawnEntity(new ShipTest(this, new Vector2(50, 100)));
     }
 
     public void render(SpriteBatch batch, OrthographicCamera camera) {

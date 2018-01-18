@@ -44,9 +44,6 @@ public class Planet {
 
     public void render(SpriteBatch batch, OrthographicCamera camera) {
         this.sprite.draw(batch);
-
-        batch.end();
-        batch.begin();
     }
 
     public void update(OrthographicCamera camera) {
