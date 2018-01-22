@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.dungeon.game.entity.Direction;
 import com.dungeon.game.entity.Entity;
 import com.dungeon.game.map.Map;
 
@@ -27,6 +28,44 @@ public abstract class Ship extends Entity {
         this.acceleration = acceleration;
         this.maneuverability = maneuverability;
         this.parentMap = parentMap;
+    }
+
+    public void moveAtCurrentVelocity() {
+        this.getPosition().add(-this.getSpeed() * (float) Math.cos(Math.toRadians(this.getRotation() - 90)), 0);
+        this.getPosition().add(0, -this.getSpeed() * (float) Math.sin(Math.toRadians(this.getRotation() - 90)));
+    }
+
+    public void adjustMovementTo(Direction direction) {
+        switch(direction) {
+            case UP:
+                this.setSpeed(this.getSpeed() + this.getAcceleration() * Gdx.graphics.getDeltaTime());
+
+                if(this.getSpeed() >= this.getMaximumSpeed()) {
+                    this.setSpeed(this.getMaximumSpeed());
+                }
+                break;
+            case DOWN:
+                this.setSpeed(this.getSpeed() - this.getAcceleration() * Gdx.graphics.getDeltaTime());
+
+                if(this.getSpeed() <= 0) {
+                    this.setSpeed(0);
+                }
+                break;
+            case RIGHT:
+                this.setRotation(this.getRotation() - this.getManeuverability() * Gdx.graphics.getDeltaTime());
+                break;
+            case LEFT:
+                this.setRotation(this.getRotation() + this.getManeuverability() * Gdx.graphics.getDeltaTime());
+                break;
+        }
+    }
+
+    /**
+     * Circles around the current position at maximum available speed
+     */
+    public void orbit() {
+        this.adjustMovementTo(Direction.UP);
+        this.adjustMovementTo(Direction.LEFT);
     }
 
     public void setSpeed(float speed) {

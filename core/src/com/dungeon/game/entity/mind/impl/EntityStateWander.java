@@ -11,7 +11,7 @@ public class EntityStateWander extends EntityState {
 
     @Override
     public void perform() {
-        
+
     }
 
     @Override
