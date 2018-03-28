@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.dungeon.game.entity.Direction;
+import com.dungeon.game.entity.mind.Mind;
 import com.dungeon.game.entity.ship.Ship;
 import com.dungeon.game.map.Map;
 import com.dungeon.game.map.sector.MapSector;
@@ -16,6 +17,11 @@ public class ShipPlayer extends Ship {
         super(parentMap,"ships/paso_star_explorer_class.png", 5, 1f, 50);
         this.setRotation(30);
         this.getPosition().set(100, 100);
+    }
+
+    @Override
+    public Mind setupMind() {
+        return null;
     }
 
     @Override

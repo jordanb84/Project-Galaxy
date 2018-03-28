@@ -5,9 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.dungeon.game.entity.ship.impl.ShipPlayer;
 import com.dungeon.game.state.StateController;
-import com.dungeon.game.state.impl.StateSectorTest;
 import com.dungeon.game.state.impl.StateStartMenu;
 
 public class Game extends ApplicationAdapter {

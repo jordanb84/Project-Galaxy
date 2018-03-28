@@ -1,13 +1,14 @@
 package com.dungeon.game.entity.mind;
 
 import com.dungeon.game.entity.Entity;
+import com.dungeon.game.entity.ship.Ship;
 
 public abstract class EntityState {
 
-    private Mind parentMind;
+    private Ship parentShip;
 
-    public EntityState(Mind parentMind) {
-        this.parentMind = parentMind;
+    public EntityState(Ship parentShip) {
+        this.parentShip = parentShip;
     }
 
     /**
@@ -17,15 +18,15 @@ public abstract class EntityState {
 
     /**
      * Checks if the conditions have been met to transition to another state,
-     * and switches to the new state if true
+     * and switches to the new state if true aura
      */
     public abstract void checkTransitionConditions();
 
     public Mind getParentMind() {
-        return parentMind;
+        return this.getParentShip().getMind();
     }
 
-    public Entity getParentEntity() {
-        return this.getParentMind().getParentEntity();
+    public Ship getParentShip() {
+        return this.parentShip;
     }
 }

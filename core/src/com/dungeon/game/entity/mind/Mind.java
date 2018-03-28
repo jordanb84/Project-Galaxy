@@ -1,6 +1,7 @@
 package com.dungeon.game.entity.mind;
 
 import com.dungeon.game.entity.Entity;
+import com.dungeon.game.entity.ship.Ship;
 import com.dungeon.game.state.State;
 
 /**
@@ -9,11 +10,11 @@ import com.dungeon.game.state.State;
  */
 public class Mind {
 
-    private Entity parentEntity;
+    private Ship parentEntity;
 
     private EntityState activeState;
 
-    public Mind(Entity parentEntity, EntityState initialState) {
+    public Mind(Ship parentEntity, EntityState initialState) {
         this.parentEntity = parentEntity;
         this.activeState = initialState;
     }
@@ -23,7 +24,11 @@ public class Mind {
         this.activeState.checkTransitionConditions();
     }
 
-    public Entity getParentEntity() {
+    public Ship getParentEntity() {
         return parentEntity;
+    }
+
+    public EntityState getActiveState() {
+        return activeState;
     }
 }
