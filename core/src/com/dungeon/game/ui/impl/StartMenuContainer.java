@@ -47,7 +47,7 @@ public class StartMenuContainer extends UiContainer {
 
 class NewGameButton extends TextButton {
 
-    public NewGameButton(StateController stateController, Skin skin) {
+    public NewGameButton(final StateController stateController, Skin skin) {
         super("New Game", skin);
 
         this.addListener(new ClickListener() {
